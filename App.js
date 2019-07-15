@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native';
-import HeaderStyle from './HeaderStyle';
+import Header from './Header';
 const restaurants = [
   { name: 'React Cafe', address: '123 Anywhere St' },
   { name: 'Fancy Restaurant', address: '79 Food Place' },
@@ -13,10 +13,9 @@ class App extends React.Component {
   };
 
   render() {
-    console.log(`search`, this.state.search);
     return (
       <View>
-        <Text style={HeaderStyle.header}>Restaurant Reviewer</Text>
+        <Header />
         <TextInput
           style={styles.input}
           placeholder="Live Search"
