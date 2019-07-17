@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
-import { View, Text, StyleSheet, TextInput, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TextInput, ScrollView, FlatList } from 'react-native';
 import Header from 'components/Header';
+import RestaurantRow from 'components/RestaurantRow';
 const restaurants = [
   { name: 'React Cafez', address: '123 Anywhere St' },
   { name: 'Fancy Restaurant', address: '79 Food Place' },
@@ -15,14 +16,27 @@ const restaurants = [
   { name: 'Fancy Restaurant3', address: '79 Food Place' },
   { name: 'Greggs Luxury Food3', address: 'Every High St' },
   { name: 'React Cafe4', address: '123 Anywhere St' },
-  { name: 'Fancy Restaurant4', address: '79 Food Place' },
-  { name: 'Greggs Luxury Food4', address: 'Every High St' },
-  { name: 'React Cafe5', address: '123 Anywhere St' },
-  { name: 'Fancy Restaurant5', address: '79 Food Place' },
-  { name: 'Greggs Luxury Food5', address: 'Every High St' },
-  { name: 'React Cafe6', address: '123 Anywhere St' },
-  { name: 'Fancy Restaurant6', address: '79 Food Place' },
-  { name: 'Greggs Luxury Food6', address: 'Every High St' }
+  { name: 'Fancy Restaurant45', address: '79 Food Place' },
+  { name: 'Greggs Luxury Food45', address: 'Every High St' },
+  { name: 'React Cafe55', address: '123 Anywhere St' },
+  { name: 'Fancy Restaurant55', address: '79 Food Place' },
+  { name: 'Greggs Luxury Food55', address: 'Every High St' },
+  { name: 'React Cafe650', address: '123 Anywhere St' },
+  { name: 'Fancy Restaurant69', address: '79 Food Place' },
+  { name: 'Fancy Restaurant25', address: '79 Food Place' },
+  { name: 'Greggs Luxury Food25', address: 'Every High St' },
+  { name: 'React Cafe35', address: '123 Anywhere St' },
+  { name: 'Fancy Restaurant35', address: '79 Food Place' },
+  { name: 'Greggs Luxury Food35', address: 'Every High St' },
+  { name: 'React Cafe49', address: '123 Anywhere St' },
+  { name: 'Fancy Restaurant47', address: '79 Food Place' },
+  { name: 'Greggs Luxury Food49', address: 'Every High St' },
+  { name: 'React Cafe559', address: '123 Anywhere St' },
+  { name: 'Fancy Restaurant59', address: '79 Food Place' },
+  { name: 'Greggs Luxury Food55', address: 'Every High St' },
+  { name: 'React Cafe del bar', address: '123 Anywhere St' },
+  { name: 'Fancy Restaurant so fancy', address: '79 Food Place' },
+  { name: 'Greggs Luxury Food Express', address: 'Every High St' }
 ];
 
 class App extends React.Component {
@@ -42,24 +56,14 @@ class App extends React.Component {
           }}
           value={this.state.search}
         />
-        <ScrollView style={{ paddingTop: 30 }}>
-          {restaurants
-            .filter(place => !this.state.search || place.name.toLowerCase().includes(this.state.search))
-            .map((place, i) => (
-              <View key={i} style={[styles.row, { backgroundColor: i % 2 === 0 ? 'white' : '#eeeeee' }]}>
-                <View style={styles.edges}>
-                  <Text>{i + 1}</Text>
-                </View>
-                <View style={styles.nameAddress}>
-                  <Text>{place.name}</Text>
-                  <Text style={styles.address}>{place.address}</Text>
-                </View>
-                <View style={styles.edges}>
-                  <Text>Info ></Text>
-                </View>
-              </View>
-            ))}
-        </ScrollView>
+        <FlatList
+          style={{}}
+          data={restaurants.filter(place => !this.state.search || place.name.toLowerCase().includes(this.state.search))}
+          renderItem={({ item, index }) => <RestaurantRow place={item} i={index} />}
+          keyExtractor={item => item.name}
+          initialNumToRender={5}
+          enableEmptySections={true}
+        />
       </View>
     );
   }
