@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native';
-import Header from './Header';
+import Header from 'components/Header';
 const restaurants = [
   { name: 'React Cafe', address: '123 Anywhere St' },
   { name: 'Fancy Restaurant', address: '79 Food Place' },
@@ -36,7 +36,7 @@ class App extends React.Component {
                 <Text style={styles.address}>{place.address}</Text>
               </View>
               <View style={styles.edges}>
-                <Text>Info</Text>
+                <Text>Info ></Text>
               </View>
             </View>
           ))}
