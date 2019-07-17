@@ -1,5 +1,13 @@
 import React, { Fragment } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  TouchableOpacity,
+  TouchableHighlight,
+  TouchableWithoutFeedback
+} from 'react-native';
 
 export default class RestaurantRow extends React.Component {
   state = {
@@ -23,11 +31,13 @@ export default class RestaurantRow extends React.Component {
             <Text style={styles.address}>{place.address}</Text>
           </View>
           <View style={styles.edges}>
-            <Button title="info" color="#C93F0B" accessibilityLabel="Info" onPress={this.infoPressed} />
+            <TouchableHighlight onPress={this.infoPressed} style={styles.button} underlayColor="#5938dc">
+              <Text style={styles.buttonText}>Info</Text>
+            </TouchableHighlight>
           </View>
         </View>
         {this.state.showInfo && (
-          <View>
+          <View style={styles.info}>
             <Text>Restaurant Info</Text>
           </View>
         )}
@@ -49,5 +59,23 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: '#444',
     backgroundColor: '#eee'
+  },
+  button: {
+    borderWidth: 1,
+    borderColor: '#0066CC',
+    borderRadius: 14,
+    paddingHorizontal: 10,
+    paddingVertical: 3,
+    backgroundColor: '#fff'
+  },
+  buttonText: { color: '#0066cc', fontSize: 12 },
+  info: {
+    marginHorizontal: 40,
+    marginVertical: 10,
+    padding: 10,
+    backgroundColor: '#FFF',
+    borderWidth: 1,
+    borderColor: '#DDD',
+    borderRadius: 4
   }
 });
