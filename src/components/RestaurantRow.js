@@ -2,20 +2,35 @@ import React, { Fragment } from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
 
 export default class RestaurantRow extends React.Component {
+  state = {
+    showInfo: false
+  };
+
+  infoPressed = () => {
+    this.setState(prevState => ({ showInfo: !prevState.showInfo }));
+  };
+
   render() {
     const { place, i } = this.props;
     return (
-      <View key={i} style={[styles.row, { backgroundColor: i % 2 === 0 ? 'white' : '#eeeeee' }]}>
-        <View style={styles.edges}>
-          <Text>{i + 1}</Text>
+      <View key={i} style={[{ backgroundColor: i % 2 === 0 ? 'white' : '#eeeeee' }]}>
+        <View style={styles.row}>
+          <View style={styles.edges}>
+            <Text>{i + 1}</Text>
+          </View>
+          <View style={styles.nameAddress}>
+            <Text>{place.name}</Text>
+            <Text style={styles.address}>{place.address}</Text>
+          </View>
+          <View style={styles.edges}>
+            <Button title="info" color="#C93F0B" accessibilityLabel="Info" onPress={this.infoPressed} />
+          </View>
         </View>
-        <View style={styles.nameAddress}>
-          <Text>{place.name}</Text>
-          <Text style={styles.address}>{place.address}</Text>
-        </View>
-        <View style={styles.edges}>
-          <Button title="info" />
-        </View>
+        {this.state.showInfo && (
+          <View>
+            <Text>Restaurant Info</Text>
+          </View>
+        )}
       </View>
     );
   }
