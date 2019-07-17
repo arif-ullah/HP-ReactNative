@@ -21,7 +21,7 @@ export default class RestaurantRow extends React.Component {
   render() {
     const { place, i } = this.props;
     return (
-      <View key={i} style={[{ backgroundColor: i % 2 === 0 ? 'white' : '#eeeeee' }]}>
+      <View key={i} style={[{ backgroundColor: i % 2 === 0 ? 'white' : '#e9e9e9' }]}>
         <View style={styles.row}>
           <View style={styles.edges}>
             <Text>{i + 1}</Text>
