@@ -3,6 +3,6 @@ import { Text } from 'react-native';
 import HeaderStyle from 'styles/HeaderStyle';
 export default class Header extends Component {
   render() {
-    return <Text style={HeaderStyle.androidHeader}>Restaurant Reviewer</Text>;
+    return <Text style={HeaderStyle.androidHeader}>Harry Potter</Text>;
   }
 }

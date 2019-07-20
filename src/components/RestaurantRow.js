@@ -19,7 +19,7 @@ export default class RestaurantRow extends React.Component {
   };
 
   render() {
-    const { place, i } = this.props;
+    const { character, i } = this.props;
     return (
       <View key={i} style={[{ backgroundColor: i % 2 === 0 ? 'white' : '#e9e9e9' }]}>
         <View style={styles.row}>
@@ -27,18 +27,18 @@ export default class RestaurantRow extends React.Component {
             <Text>{i + 1}</Text>
           </View>
           <View style={styles.nameAddress}>
-            <Text>{place.name}</Text>
-            <Text style={styles.address}>{place.address}</Text>
+            <Text>{character.name}</Text>
+            <Text style={styles.address}>{character.house}</Text>
           </View>
           <View style={styles.edges}>
-            <TouchableHighlight onPress={this.infoPressed} style={styles.button} underlayColor="#5938dc">
-              <Text style={styles.buttonText}>Info</Text>
+            <TouchableHighlight onPress={this.infoPressed} style={styles.button} underlayColor="#ff6600">
+              <Text style={styles.buttonText}>Info ></Text>
             </TouchableHighlight>
           </View>
         </View>
         {this.state.showInfo && (
           <View style={styles.info}>
-            <Text>Restaurant Info</Text>
+            <Text>{character.actor}</Text>
           </View>
         )}
       </View>
