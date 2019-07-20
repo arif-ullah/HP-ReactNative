@@ -17,7 +17,7 @@ export default class RestaurantRow extends React.Component {
   };
 
   infoPressed = () => {
-    this.setState(prevState => ({ showInfo: !prevState.showInfo }));
+    this.props.navigation.navigate('Info');
   };
 
   render() {
@@ -30,7 +30,8 @@ export default class RestaurantRow extends React.Component {
           </View>
           <View style={styles.nameAddress}>
             <Text>
-              {character.name} <Icon name={character.gender} color="#aaaaaa" />
+              {character.name}{' '}
+              <Icon name={character.gender} color={character.gender === 'male' ? '#0066CC' : 'hotpink'} />
             </Text>
             <Text style={styles.address}>{character.house}</Text>
           </View>
