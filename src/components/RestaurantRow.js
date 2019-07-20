@@ -6,8 +6,10 @@ import {
   Button,
   TouchableOpacity,
   TouchableHighlight,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback,
+  Image
 } from 'react-native';
+import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
 export default class RestaurantRow extends React.Component {
   state = {
@@ -23,11 +25,13 @@ export default class RestaurantRow extends React.Component {
     return (
       <View key={i} style={[{ backgroundColor: i % 2 === 0 ? 'white' : '#e9e9e9' }]}>
         <View style={styles.row}>
-          <View style={styles.edges}>
-            <Text>{i + 1}</Text>
+          <View style={[styles.edges, { flexDirection: 'row' }]}>
+            <Image source={{ uri: character.image }} style={{ flex: 1, height: 50 }} resizeMode="contain" />
           </View>
           <View style={styles.nameAddress}>
-            <Text>{character.name}</Text>
+            <Text>
+              {character.name} <Icon name={character.gender} color="#aaaaaa" />
+            </Text>
             <Text style={styles.address}>{character.house}</Text>
           </View>
           <View style={styles.edges}>
