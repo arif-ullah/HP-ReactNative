@@ -26,7 +26,6 @@ class CharactersList extends React.Component {
   render() {
     return (
       <ScrollView style={{ backgroundColor: '#ffffff' }}>
-        <Header />
         <TextInput
           style={styles.input}
           placeholder="Live Search"

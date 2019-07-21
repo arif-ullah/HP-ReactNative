@@ -1,9 +1,11 @@
 import React, { Fragment } from 'react';
 import CharactersList from 'components/CharactersList';
 import CharacterInfo from 'components/CharacterInfo';
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import About from 'components/About';
+import { createStackNavigator, createAppContainer, createBottomTabNavigator } from 'react-navigation';
+import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
-const RootStack = createStackNavigator(
+const NavStack = createStackNavigator(
   {
     Home: { screen: CharactersList },
     Info: { screen: CharacterInfo }
@@ -22,6 +24,32 @@ const RootStack = createStackNavigator(
   }
 );
 
-const App = createAppContainer(RootStack);
+const Nav = createAppContainer(NavStack);
 
-export default App;
+const TabsStack = createBottomTabNavigator(
+  {
+    Characters: { screen: Nav },
+    About: { screen: About }
+  },
+  {
+    defaultNavigationOptions: ({ navigation }) => {
+      return {
+        tabBarIcon: ({ tintColor }) => {
+          const route = navigation.state.routeName;
+          const name = {
+            Characters: 'users',
+            About: 'fort-awesome'
+          }[route];
+          return <Icon name={name} color={tintColor} size={22} />;
+        },
+        tabBarOptions: {
+          activeBackgroundColor: '#E6F0FA'
+        }
+      };
+    }
+  }
+);
+
+const Tabs = createAppContainer(TabsStack);
+
+export default Tabs;
