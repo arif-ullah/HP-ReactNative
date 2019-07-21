@@ -12,7 +12,7 @@ export default StyleSheet.create({
     padding: 40,
     fontSize: 26,
     textAlign: 'center',
-    color: '#ff6600',
+    color: '#0066cc',
     fontWeight: '300'
   }
 });

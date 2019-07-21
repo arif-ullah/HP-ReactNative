@@ -17,11 +17,14 @@ export default class RestaurantRow extends React.Component {
   };
 
   infoPressed = () => {
-    this.props.navigation.navigate('Info');
+    this.props.navigation.navigate('Info', {
+      character: this.props
+    });
   };
 
   render() {
     const { character, i } = this.props;
+
     return (
       <View key={i} style={[{ backgroundColor: i % 2 === 0 ? 'white' : '#e9e9e9' }]}>
         <View style={styles.row}>

@@ -5,6 +5,10 @@ import Header from './Header';
 import RestaurantRow from './RestaurantRow';
 
 class CharactersList extends React.Component {
+  static navigationOptions = {
+    header: null
+  };
+
   state = {
     search: '',
     characters: []
@@ -20,9 +24,8 @@ class CharactersList extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
-      <ScrollView>
+      <ScrollView style={{ backgroundColor: '#ffffff' }}>
         <Header />
         <TextInput
           style={styles.input}
