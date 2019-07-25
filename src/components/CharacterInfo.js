@@ -78,7 +78,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 3,
     backgroundColor: '#fff',
-    textAlign: 'center'
+    textAlign: 'center',
+    alignSelf: 'flex-start'
   },
   buttonText: { color: '#0066cc', fontSize: 12 }
 });
