@@ -12,6 +12,10 @@ import {
   ScrollView
 } from 'react-native';
 
+const addComment = navigation => {
+  navigation.navigate('AddComment');
+};
+
 const CharacterInfo = props => {
   const { character } = props.navigation.getParam('character');
   console.log(character);
@@ -29,6 +33,9 @@ const CharacterInfo = props => {
         <View style={styles.info}>
           <Text style={styles.name}>{character.name}</Text>
           <Text style={styles.address}>{character.house}</Text>
+          <TouchableOpacity style={styles.button} onPress={() => addComment(props.navigation)}>
+            <Text style={styles.buttonText}>Add comment</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </ScrollView>
@@ -63,5 +70,15 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     margin: 20
-  }
+  },
+  button: {
+    borderWidth: 1,
+    borderColor: '#0066CC',
+    borderRadius: 14,
+    paddingHorizontal: 10,
+    paddingVertical: 3,
+    backgroundColor: '#fff',
+    textAlign: 'center'
+  },
+  buttonText: { color: '#0066cc', fontSize: 12 }
 });

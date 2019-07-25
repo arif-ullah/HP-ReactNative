@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import CharactersList from 'components/CharactersList';
 import CharacterInfo from 'components/CharacterInfo';
 import About from 'components/About';
+import AddComment from 'components/AddComment';
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
@@ -52,4 +53,17 @@ const TabsStack = createBottomTabNavigator(
 
 const Tabs = createAppContainer(TabsStack);
 
-export default Tabs;
+const ModalStack = createStackNavigator(
+  {
+    Tabs: { screen: Tabs },
+    AddComment: { screen: AddComment }
+  },
+  {
+    mode: 'modal',
+    headerMode: 'none'
+  }
+);
+
+const Modal = createAppContainer(ModalStack);
+
+export default Modal;
