@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { View, Text, TouchableOpacity, StyleSheet, TextInput, ActivityIndicator } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, TextInput, ActivityIndicator, AsyncStorage } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -11,12 +11,27 @@ export default class AddComment extends Component {
     name: '',
     appState: ''
   };
+
+  componentDidMount() {
+    AsyncStorage.getItem('username').then(name => {
+      if (name !== null && name !== undefined) {
+        this.setState({ name });
+      }
+    });
+  }
+
   close = () => {
     this.props.navigation.goBack();
   };
 
   submitComment = () => {
     this.setState({ appState: 'loading' });
+    const { name } = this.state;
+
+    if (name !== null && name !== undefined) {
+      AsyncStorage.setItem('username', name);
+    }
+
     setTimeout(() => {
       this.setState({ appState: '' });
       this.props.navigation.goBack();
