@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { View, Text, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, TextInput, ActivityIndicator } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -8,10 +8,19 @@ export default class AddComment extends Component {
   state = {
     review: '',
     rating: 0,
-    name: ''
+    name: '',
+    appState: ''
   };
   close = () => {
     this.props.navigation.goBack();
+  };
+
+  submitComment = () => {
+    this.setState({ appState: 'loading' });
+    setTimeout(() => {
+      this.setState({ appState: '' });
+      this.props.navigation.goBack();
+    }, 2000);
   };
 
   render() {
@@ -48,8 +57,15 @@ export default class AddComment extends Component {
             multiline={true}
             numberOfLines={5}
           />
+          {this.state.appState === 'loading' && (
+            <ActivityIndicator size="large" color="#0066cc" style={{ padding: 10 }} />
+          )}
 
-          <TouchableOpacity style={styles.submitButton}>
+          <TouchableOpacity
+            style={styles.submitButton}
+            onPress={this.submitComment}
+            disabled={this.state.appState === 'loading'}
+          >
             <Text style={styles.submitButtonText}>Submit Comment</Text>
           </TouchableOpacity>
         </View>
