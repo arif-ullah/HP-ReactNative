@@ -37,7 +37,7 @@ class CharactersList extends React.Component {
         <FlatList
           style={{}}
           data={this.state.characters.filter(
-            char => !this.state.search || char.name.toLowerCase().includes(this.state.search)
+            char => !this.state.search || char.name.toLowerCase().indexOf(this.state.search.toLowerCase()) > -1
           )}
           renderItem={({ item, index }) => (
             <RestaurantRow character={item} i={index} navigation={this.props.navigation} />
